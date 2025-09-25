@@ -8,7 +8,7 @@ from app.core.config import get_settings
 
 
 @asynccontextmanager
-def lifespan(app: FastAPI):
+async def lifespan(app: FastAPI):
     # Hook for startup/shutdown tasks (DB, queues etc.)
     yield
 

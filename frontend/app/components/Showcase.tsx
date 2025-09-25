@@ -1,38 +1,50 @@
 const CASES = [
   {
-    title: "Predictive Maintenance für Industrie 4.0",
-    challenge: "Sensor-Daten aus mehreren Werken ohne einheitliche Pipeline.",
-    approach: "Konzeption eines Data Lakehouse, Feature Store und FastAPI-Inferenz-Service mit GPU-Beschleunigung.",
-    result: "Reduktion ungeplanter Stillstände um 22% innerhalb von 6 Monaten.",
+    title: "Predictive Maintenance für Produktionsanlagen",
+    challenge: "Sensorik aus mehreren Werken ohne zentrale Datenplattform.",
+    approach: "Data Lakehouse, Feature Store und FastAPI-Inferenzservice mit GPU-Beschleunigung.",
+    result: "Stillstandszeiten um 22% reduziert binnen 6 Monaten.",
   },
   {
     title: "Conversational Intelligence im Kundenservice",
-    challenge: "Lange Reaktionszeiten und fehlende Wissensbasis.",
-    approach: "LLM-gestützter Copilot mit Retrieval-Augmented Generation, integriert in bestehendes CRM.",
+    challenge: "Lange Reaktionszeiten und verstreutes Expertenwissen.",
+    approach: "LLM-Copilot mit Retrieval-Augmented Generation und SAP/CRM-Integration.",
     result: "First-Response-Time von 18 auf 4 Minuten gesenkt.",
   },
   {
-    title: "Demand Forecasting für Einzelhandel",
-    challenge: "Schwankende Nachfrage und Überbestände in über 120 Filialen.",
-    approach: "Next.js Dashboard, FastAPI zur Modellorchestrierung und MLOps-Automatisierung mit GitHub Actions.",
-    result: "Lagerkosten um 15% reduziert, verbesserte Planungszyklen.",
+    title: "Demand Forecasting im Großhandel",
+    challenge: "Schwankende Nachfrage und Überbestände in 120 Filialen.",
+    approach: "LLMs für Marktsignale, ML-Pipeline in Azure ML, Next.js Steuerungscockpit.",
+    result: "Lagerkosten um 15% gesenkt und Servicegrad gesteigert.",
   },
 ];
 
 export function Showcase() {
   return (
-    <section id="cases">
-      <div className="container">
-        <div className="badge">Case Studies</div>
-        <h2 className="section-title">Messbarer Impact in Schlüsselprojekten.</h2>
-        <div className="grid" style={{ marginTop: "3rem", gap: "2rem" }}>
+    <section id="case-studies">
+      <div className="container-boundary space-y-8">
+        <div className="space-y-3">
+          <span className="subheading">Case Studies</span>
+          <h2 className="text-3xl font-display text-white md:text-4xl">Messbarer Impact in Schlüsselprojekten.</h2>
+          <p className="max-w-3xl text-lg text-slate-300">
+            Jede Einführung liefert konkrete KPIs – von Uptime-Steigerung über Kostenreduzierung bis hin zu neuen Serviceangeboten.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {CASES.map((item) => (
-            <article key={item.title} className="card" style={{ display: "grid", gap: "1rem" }}>
-              <h3>{item.title}</h3>
-              <div style={{ display: "grid", gap: "0.5rem", color: "var(--color-muted)" }}>
-                <p><strong>Herausforderung:</strong> {item.challenge}</p>
-                <p><strong>Ansatz:</strong> {item.approach}</p>
-                <p><strong>Ergebnis:</strong> {item.result}</p>
+            <article key={item.title} className="card-surface shadow-card flex h-full flex-col gap-4 rounded-3xl border border-white/10 bg-slate-900/60 p-7">
+              <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+              <div className="space-y-3 text-sm leading-relaxed text-slate-300">
+                <p>
+                  <strong className="text-orange-200">Herausforderung:</strong> {item.challenge}
+                </p>
+                <p>
+                  <strong className="text-orange-200">Ansatz:</strong> {item.approach}
+                </p>
+                <p>
+                  <strong className="text-orange-200">Ergebnis:</strong> {item.result}
+                </p>
               </div>
             </article>
           ))}

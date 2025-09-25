@@ -1,44 +1,46 @@
 const STACK = [
   {
-    category: "Frontend",
-    tools: ["Next.js 14", "React 18", "Tailwind oder Vanilla-Designsystem", "Vercel Edge"],
+    category: "Industrial Data & Infrastructure",
+    tools: ["Time-Series Pipelines", "IIoT Integration", "Data Lakehouse", "Feature Stores"],
   },
   {
-    category: "Backend",
-    tools: ["FastAPI", "Pydantic", "Celery/Redis", "OpenAPI-first"],
+    category: "Machine Learning & LLMs",
+    tools: ["PyTorch / Scikit-Learn", "OpenAI & Azure OpenAI", "RAG-Orchestrierung", "Prompt Guardrails"],
   },
   {
-    category: "AI & Data",
-    tools: ["LangChain", "OpenAI / Azure OpenAI", "MLflow", "dbt", "DuckDB"],
+    category: "Application Layer",
+    tools: ["Next.js Interfaces", "FastAPI & GraphQL", "Edge & Cloud Deployments", "Real-time Dashboards"],
   },
   {
-    category: "Ops",
-    tools: ["GitHub Actions", "Terraform", "Sentry", "Grafana"],
+    category: "MLOps & Governance",
+    tools: ["GitHub Actions", "Terraform & Bicep", "Model Monitoring", "Audit & Compliance"],
   },
 ];
 
 export function TechStack() {
   return (
-    <section id="tech">
-      <div className="container">
-        <div className="badge">Tech Stack</div>
-        <h2 className="section-title">Bewährte Komponenten, kombiniert für Geschwindigkeit.</h2>
-        <p className="section-subtitle">
-          Jede Lösung wird auf Ihr Setup zugeschnitten. Ich arbeite bevorzugt mit Open-Source-Bausteinen und Cloud-Services, die sich nahtlos integrieren lassen.
-        </p>
-        <div
-          className="grid"
-          style={{
-            marginTop: "3rem",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          }}
-        >
+    <section className="relative" id="capabilities">
+      <div className="container-boundary space-y-8">
+        <div className="space-y-3">
+          <span className="subheading">Capabilities</span>
+          <h2 className="text-3xl font-display text-white md:text-4xl">
+            Bewährte Komponenten, kombiniert für Geschwindigkeit & Sicherheit.
+          </h2>
+          <p className="max-w-3xl text-lg text-slate-300">
+            Jede Lösung greift auf moderne, industrieerprobte Tools zurück – von IIoT-Datenpipelines bis zu abgesicherten LLM-Integrationen.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {STACK.map((group) => (
-            <article key={group.category} className="card" style={{ display: "grid", gap: "0.75rem" }}>
-              <h3>{group.category}</h3>
-              <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "grid", gap: "0.35rem", color: "var(--color-muted)" }}>
+            <article key={group.category} className="card-surface rounded-3xl border border-white/10 bg-slate-900/40 p-6">
+              <h3 className="text-lg font-semibold text-white">{group.category}</h3>
+              <ul className="mt-4 space-y-2 text-sm text-slate-300">
                 {group.tools.map((tool) => (
-                  <li key={tool}>{tool}</li>
+                  <li key={tool} className="flex items-start gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-orange-400" aria-hidden />
+                    <span>{tool}</span>
+                  </li>
                 ))}
               </ul>
             </article>

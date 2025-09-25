@@ -1,49 +1,50 @@
 const SERVICES = [
   {
-    title: "AI Discovery & Strategie",
-    description:
-      "Identifikation der wertstiftenden Use Cases, Daten-Audit sowie Roadmap für organisatorische Verankerung.",
-    highlights: ["Opportunity Workshops", "Business-Value-Scoring", "KPI-Definition"],
+    title: "KI-Strategie & Datenarchitektur",
+    description: "Workshops, Dateninventur und Use-Case-Priorisierung mit belastbaren Business-Cases.",
+    highlights: ["Industrial Data Audit", "Use-Case Scoring", "Zielbild & Roadmap"],
   },
   {
-    title: "Prototyping & MVP",
-    description:
-      "Iterative Entwicklung von funktionsfähigen KI-Prototypen mit klar messbarem Impact für Stakeholder.",
-    highlights: ["Rapid Experimentation", "Design Sprints", "User Validation"],
+    title: "Machine Learning & LLM Engineering",
+    description: "Modellierung, RAG-Pipelines und Inferenz-APIs – sicher integriert in Ihr Tech-Ökosystem.",
+    highlights: ["Predictive Maintenance", "LLM Safety Patterns", "Edge & Cloud Deployments"],
   },
   {
-    title: "Produktionsreife & MLOps",
-    description:
-      "Skalierbare Deployments mit CI/CD, observability und Compliance-konformen Datenpipelines.",
-    highlights: ["Infrastructure as Code", "Monitoring & Alerting", "Retraining-Playbooks"],
+    title: "MLOps & Betrieb",
+    description: "Kontinuierliche Auslieferung mit Monitoring, Retraining-Playbooks und Compliance-Governance.",
+    highlights: ["CI/CD & IaC", "Observability Dashboards", "SLA-orientierter Support"],
   },
 ];
 
 export function Services() {
   return (
-    <section id="leistungen">
-      <div className="container">
-        <div className="badge">Services</div>
-        <h2 className="section-title">Von der Vision zum produktionsreifen KI-System.</h2>
-        <p className="section-subtitle">
-          Ich kombiniere Produktdenken, Data Science und moderne Softwareentwicklung, damit Ideen schnell in skalierbare Anwendungen überführt werden.
-        </p>
-        <div
-          className="grid"
-          style={{
-            marginTop: "3rem",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-          }}
-        >
+    <section className="gradient-section" id="leistungen">
+      <div className="container-boundary space-y-8">
+        <div className="space-y-3">
+          <span className="subheading">Leistungen</span>
+          <h2 className="text-balance text-3xl font-display font-semibold text-white md:text-4xl">
+            Von der KI-Strategie bis zum verlässlichen Betrieb.
+          </h2>
+          <p className="max-w-3xl text-lg text-slate-300">
+            Ich verbinde Datenstrategie, Softwareengineering und KI-Produktdenken. Ziel: industrielle AI-Lösungen, die messbar Wert schaffen und dauerhaft laufen.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service) => (
-            <article key={service.title} className="card" style={{ display: "grid", gap: "1rem" }}>
-              <h3 style={{ fontSize: "1.4rem" }}>{service.title}</h3>
-              <p style={{ color: "var(--color-muted)", lineHeight: 1.6 }}>{service.description}</p>
-              <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "grid", gap: "0.65rem" }}>
+            <article
+              key={service.title}
+              className="card-surface shadow-card flex h-full flex-col gap-6 rounded-3xl border border-white/10 bg-slate-900/40 p-8"
+            >
+              <header className="space-y-2">
+                <h3 className="text-2xl font-semibold text-white">{service.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-300">{service.description}</p>
+              </header>
+              <ul className="space-y-3 text-sm text-slate-200">
                 {service.highlights.map((highlight) => (
-                  <li key={highlight} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                    <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--color-primary)" }} />
-                    <span>{highlight}</span>
+                  <li key={highlight} className="flex items-center gap-3">
+                    <span className="inline-flex h-2 w-2 rounded-full bg-orange-400" aria-hidden />
+                    <span className="leading-relaxed">{highlight}</span>
                   </li>
                 ))}
               </ul>

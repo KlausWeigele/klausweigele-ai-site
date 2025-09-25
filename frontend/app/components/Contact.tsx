@@ -11,17 +11,15 @@ export function Contact() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-
     const payload = Object.fromEntries(formData.entries());
+
     setStatus("loading");
     setMessage("");
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
+        headers: { "content-type": "application/json" },
         body: JSON.stringify(payload),
       });
 
@@ -30,127 +28,126 @@ export function Contact() {
       }
 
       setStatus("success");
-      setMessage("Vielen Dank! Ich melde mich in Kürze.");
+      setMessage("Vielen Dank! Ich melde mich innerhalb von 24 Stunden.");
       event.currentTarget.reset();
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
       setStatus("error");
-      setMessage("Leider hat das nicht geklappt. Bitte senden Sie mir eine E-Mail an hello@klausweigele.ai.");
+      setMessage("Leider hat das nicht funktioniert. Bitte schreiben Sie an hello@klausweigele.ai.");
     }
   }
 
   return (
-    <section id="kontakt" style={{ paddingBottom: "8rem" }}>
-      <div className="container">
-        <div className="badge">Kontakt</div>
-        <h2 className="section-title">Lassen Sie uns Ihr nächstes KI-Vorhaben besprechen.</h2>
-        <p className="section-subtitle">
-          Beschreiben Sie kurz Ihr Projekt – ich melde mich innerhalb von 24 Stunden mit konkreten nächsten Schritten.
-        </p>
+    <section id="kontakt">
+      <div className="container-boundary grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,0.8fr)] lg:items-start">
+        <div className="space-y-4">
+          <span className="subheading">Kontakt</span>
+          <h2 className="text-3xl font-display text-white md:text-4xl">
+            Lassen Sie uns Ihr nächstes KI-Vorhaben besprechen.
+          </h2>
+          <p className="max-w-xl text-lg text-slate-300">
+            Buchen Sie einen 30-minütigen Kennenlern-Call – wir prüfen Machbarkeit, klären Ziele und skizzieren die ersten Quick Wins.
+          </p>
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-sm text-slate-200">
+            <p className="font-semibold text-white">Was Sie erwarten können:</p>
+            <ul className="mt-3 space-y-2 text-slate-300">
+              <li>• Analyse Ihrer aktuellen Daten- & Tool-Landschaft</li>
+              <li>• Identifikation von Quick-Wins & Pilotprojekten</li>
+              <li>• Roadmap-Vorschlag für die nächsten 6–12 Wochen</li>
+            </ul>
+          </div>
+        </div>
+
         <form
-          className="card"
-          style={{ marginTop: "3rem", display: "grid", gap: "1.25rem" }}
           onSubmit={handleSubmit}
+          className="card-surface shadow-card space-y-5 rounded-3xl border border-white/10 bg-slate-950/60 p-8"
         >
-          <div style={{ display: "grid", gap: "0.5rem" }}>
-            <label htmlFor="name">Name</label>
+          <div className="grid gap-2">
+            <label htmlFor="name" className="text-sm font-medium text-slate-200">
+              Name
+            </label>
             <input
               id="name"
               name="name"
-              type="text"
               required
               autoComplete="name"
-              style={{
-                padding: "0.85rem 1rem",
-                borderRadius: "0.75rem",
-                border: "1px solid rgba(255,255,255,0.12)",
-                background: "rgba(5,7,13,0.2)",
-                color: "inherit",
-              }}
+              className="rounded-2xl border border-white/15 bg-slate-900/60 px-4 py-3 text-base text-white shadow-inner focus:border-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500/40"
             />
           </div>
-          <div style={{ display: "grid", gap: "0.5rem" }}>
-            <label htmlFor="email">E-Mail</label>
+          <div className="grid gap-2">
+            <label htmlFor="email" className="text-sm font-medium text-slate-200">
+              E-Mail
+            </label>
             <input
               id="email"
               name="email"
               type="email"
               required
               autoComplete="email"
-              style={{
-                padding: "0.85rem 1rem",
-                borderRadius: "0.75rem",
-                border: "1px solid rgba(255,255,255,0.12)",
-                background: "rgba(5,7,13,0.2)",
-                color: "inherit",
-              }}
+              className="rounded-2xl border border-white/15 bg-slate-900/60 px-4 py-3 text-base text-white shadow-inner focus:border-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500/40"
             />
           </div>
-          <div style={{ display: "grid", gap: "0.5rem" }}>
-            <label htmlFor="company">Unternehmen (optional)</label>
+          <div className="grid gap-2">
+            <label htmlFor="company" className="text-sm font-medium text-slate-200">
+              Unternehmen (optional)
+            </label>
             <input
               id="company"
               name="company"
-              type="text"
               autoComplete="organization"
-              style={{
-                padding: "0.85rem 1rem",
-                borderRadius: "0.75rem",
-                border: "1px solid rgba(255,255,255,0.12)",
-                background: "rgba(5,7,13,0.2)",
-                color: "inherit",
-              }}
+              className="rounded-2xl border border-white/15 bg-slate-900/60 px-4 py-3 text-base text-white shadow-inner focus:border-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500/40"
             />
           </div>
-          <div style={{ display: "grid", gap: "0.5rem" }}>
-            <label htmlFor="budget">Geplantes Budget</label>
+          <div className="grid gap-2">
+            <label htmlFor="focus" className="text-sm font-medium text-slate-200">
+              Projektfokus
+            </label>
             <select
-              id="budget"
-              name="budget"
-              required
-              defaultValue="25-50k"
-              style={{
-                padding: "0.85rem 1rem",
-                borderRadius: "0.75rem",
-                border: "1px solid rgba(255,255,255,0.12)",
-                background: "rgba(5,7,13,0.2)",
-                color: "inherit",
-              }}
+              id="focus"
+              name="focus"
+              defaultValue="ml"
+              className="rounded-2xl border border-white/15 bg-slate-900/60 px-4 py-3 text-base text-white focus:border-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500/40"
             >
-              <option value="under25">Unter 25.000 €</option>
-              <option value="25-50k">25.000 – 50.000 €</option>
-              <option value="50-100k">50.000 – 100.000 €</option>
-              <option value="above100">Über 100.000 €</option>
+              <option value="strategy" className="bg-slate-900">
+                KI-Strategie & Datenarchitektur
+              </option>
+              <option value="ml" className="bg-slate-900">
+                Machine Learning & LLM Engineering
+              </option>
+              <option value="ops" className="bg-slate-900">
+                MLOps & Betrieb
+              </option>
             </select>
           </div>
-          <div style={{ display: "grid", gap: "0.5rem" }}>
-            <label htmlFor="message">Projektbeschreibung</label>
+          <div className="grid gap-2">
+            <label htmlFor="message" className="text-sm font-medium text-slate-200">
+              Projektbeschreibung
+            </label>
             <textarea
               id="message"
               name="message"
               rows={5}
               required
-              style={{
-                padding: "0.85rem 1rem",
-                borderRadius: "0.75rem",
-                border: "1px solid rgba(255,255,255,0.12)",
-                background: "rgba(5,7,13,0.2)",
-                color: "inherit",
-              }}
+              className="rounded-2xl border border-white/15 bg-slate-900/60 px-4 py-3 text-base text-white shadow-inner focus:border-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500/40"
             />
           </div>
-          <button className="button" type="submit" disabled={status === "loading"}>
-            {status === "loading" ? "Wird gesendet…" : "Unverbindliches Erstgespräch sichern"}
+          <button
+            type="submit"
+            className="w-full rounded-full bg-orange-500 px-6 py-3 text-base font-semibold text-slate-950 transition hover:bg-orange-400 disabled:cursor-not-allowed disabled:opacity-75"
+            disabled={status === "loading"}
+          >
+            {status === "loading" ? "Wird gesendet…" : "Kennenlern-Call anfragen"}
           </button>
           {message && (
-            <p style={{
-              color: status === "success" ? "#6ee7b7" : "#f87171",
-              fontSize: "0.9rem",
-            }}>
+            <p
+              className={`text-sm ${
+                status === "success" ? "text-emerald-300" : "text-rose-300"
+              }`}
+            >
               {message}
             </p>
           )}
-          <p style={{ color: "var(--color-muted)", fontSize: "0.85rem" }}>
+          <p className="text-xs text-slate-400">
             DSGVO-konforme Verarbeitung. Weitere Details in der Datenschutzerklärung.
           </p>
         </form>
